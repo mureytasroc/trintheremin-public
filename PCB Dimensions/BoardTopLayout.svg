@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="24in" height="12in" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 24000 12000"
+ xmlns:xlink="http://www.w3.org/1999/xlink"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:cc="http://creativecommons.org/ns#"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+ xmlns:svg="http://www.w3.org/2000/svg"
+ xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+ xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+ inkscape:version="0.91 r13725"
+ sodipodi:docname="CaseDesign.svg">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str0 {stroke:black;stroke-width:3}
+    .fil0 {fill:none}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <sodipodi:namedview id="base" pagecolor="#ffffff" bordercolor="#666666" borderopacity="1.0" inkscape:pageopacity="0.0" inkscape:pageshadow="2" inkscape:zoom="1.4142136" inkscape:cx="211.0634" inkscape:cy="126.78238" inkscape:document-units="px" inkscape:current-layer="layer1" showgrid="false" units="in" inkscape:window-width="1366" inkscape:window-height="693" inkscape:window-x="0" inkscape:window-y="1" inkscape:window-maximized="1"/>
+  <rect id="rect5612" class="fil0 str0" y="10000" width="4500" height="2000"/>
+  <path id="path5614" class="fil0 str0" d="M183 11875c0,-32 -26,-58 -58,-58 -33,0 -59,26 -59,58 0,33 26,59 59,59 32,0 58,-26 58,-59z"/>
+  <path id="path5616" class="fil0 str0" d="M183 10125c0,-33 -26,-59 -58,-59 -33,0 -59,26 -59,59 0,32 26,58 59,58 32,0 58,-26 58,-58z"/>
+  <path id="path5618" class="fil0 str0" d="M4434 10125c0,-33 -26,-59 -59,-59 -32,0 -58,26 -58,59 0,32 26,59 58,59 33,0 59,-27 59,-59z"/>
+  <path id="path5620" class="fil0 str0" d="M4434 11875c0,-32 -26,-59 -59,-59 -32,0 -58,27 -58,59 0,33 26,59 58,59 33,0 59,-26 59,-59z"/>
+  <path id="path5625" class="fil0 str0" d="M2005 11783c0,-21 -17,-39 -39,-39 -21,0 -39,18 -39,39 0,22 18,39 39,39 22,0 39,-17 39,-39z"/>
+  <path id="path5627" class="fil0 str0" d="M1782 10147c0,-22 -17,-39 -39,-39 -21,0 -39,17 -39,39 0,21 18,39 39,39 22,0 39,-18 39,-39z"/>
+  <path id="path5629" class="fil0 str0" d="M3223 10147c0,-22 -18,-39 -40,-39 -21,0 -39,17 -39,39 0,21 18,39 39,39 22,0 40,-18 40,-39z"/>
+  <path id="path5631" class="fil0 str0" d="M3000 11783c0,-21 -18,-39 -40,-39 -21,0 -39,18 -39,39 0,22 18,39 39,39 22,0 40,-17 40,-39z"/>
+  <rect id="rect5633" class="fil0 str0" x="517" y="10335" width="399" height="1486"/>
+  <rect id="rect5635" class="fil0 str0" x="1236" y="10334" width="399" height="1488"/>
+  <rect id="rect5637" class="fil0 str0" x="1819" y="10029" width="1287" height="1681"/>
+  <rect id="rect5639" class="fil0 str0" x="150" y="10300" width="199" height="399"/>
+  <rect id="rect5641" class="fil0 str0" x="100" y="10840" width="299" height="319"/>
+  <rect id="rect5643" class="fil0 str0" x="100" y="11341" width="299" height="319"/>
+  <path id="path5649" class="fil0 str0" d="M4220 11000c0,-204 -166,-370 -370,-370 -204,0 -369,166 -369,370 0,204 165,370 369,370 204,0 370,-166 370,-370z"/>
+  <path id="path5651" class="fil0 str0" d="M770 10115c0,-61 -49,-110 -110,-110 -60,0 -109,49 -109,110 0,60 49,109 109,109 61,0 110,-49 110,-109z"/>
+  <path id="path5653" class="fil0 str0" d="M1139 10115c0,-60 -49,-108 -109,-108 -60,0 -109,48 -109,108 0,61 49,109 109,109 60,0 109,-48 109,-109z"/>
+  <path id="path5655" class="fil0 str0" d="M1509 10115c0,-60 -49,-109 -109,-109 -60,0 -109,49 -109,109 0,60 49,109 109,109 60,0 109,-49 109,-109z"/>
+  <rect id="rect5657" class="fil0 str0" x="917" y="10556" width="318" height="889"/>
+  <rect id="rect5215" class="fil0 str0" x="3581" y="11819" width="629" height="121"/>
+  <path id="path5893" class="fil0 str0" d="M3963 10663c0,-60 -49,-109 -109,-109 -61,0 -110,49 -110,109 0,61 49,109 110,109 60,0 109,-48 109,-109z"/>
+ </g>
+</svg>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE eagle SYSTEM "eagle.dtd">
-<eagle version="8.2.0">
+<eagle version="7.6.0">
 <drawing>
 <settings>
 <setting alwaysvectorfont="no"/>
@@ -12339,7 +12339,7 @@ PNP complement: PBSS5360Z.
 <wire x1="63.5" y1="-78.74" x2="162.56" y2="-78.74" width="0.1524" layer="97"/>
 <wire x1="162.56" y1="-78.74" x2="162.56" y2="-30.48" width="0.1524" layer="97"/>
 <wire x1="162.56" y1="-30.48" x2="63.5" y2="-30.48" width="0.1524" layer="97"/>
-<text x="104.14" y="-38.1" size="3.81" layer="97">BUTTONS
+<text x="104.14" y="-43.18" size="3.81" layer="97">BUTTONS
 </text>
 <wire x1="93.98" y1="66.04" x2="93.98" y2="22.86" width="0.1524" layer="97"/>
 <wire x1="93.98" y1="22.86" x2="162.56" y2="22.86" width="0.1524" layer="97"/>
@@ -12374,13 +12374,6 @@ PNP complement: PBSS5360Z.
 <text x="231.14" y="15.24" size="1.4224" layer="97">IO11*</text>
 <text x="132.08" y="-15.24" size="1.4224" layer="97">D12</text>
 <text x="114.3" y="-53.34" size="1.4224" layer="97">D4</text>
-<text x="274.32" y="127" size="5.08" layer="97">Breakout rest</text>
-<text x="274.32" y="60.96" size="5.08" layer="97">Screw Holes 
-(Out and 3d print)</text>
-<text x="274.32" y="45.72" size="5.08" layer="97">Trin Graph/Place</text>
-<text x="274.32" y="30.48" size="5.08" layer="97">tCream</text>
-<text x="274.32" y="17.78" size="5.08" layer="97">Bom</text>
-<text x="274.32" y="5.08" size="5.08" layer="97">SVG Case</text>
 <text x="-30.48" y="86.36" size="1.778" layer="97">gnd</text>
 <text x="-30.48" y="86.36" size="1.778" layer="97">gnd</text>
 <text x="106.68" y="104.14" size="3.81" layer="97">+</text>
