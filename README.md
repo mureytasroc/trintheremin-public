@@ -30,7 +30,7 @@ Like any device, the TrinTheremin will eventually run out of battery.   Trinity'
 
 ![Alt text](https://www.powerstream.com/z/9v-100ma-discharge-tests.png)
 
-First set the multimeter to measure DC voltage and make sure the leads are connected to the right ports (red to positive (+) and black to negative (-, sometimes referred to as COM) -- see this tutorial on multimeters.   Then measure the voltage of the battery (touching the red lead of the multimeter to the positive terminal of the battery (marked by the + symbol on the battery) and the black lead to the negative terminal (marked by the -).   Here is a chart that shows the battery life estimates for an alkaline cell:
+First, set the multimeter to measure DC voltage and make sure the leads are connected to the right ports (red to positive (+) and black to negative (-, sometimes referred to as COM) -- see this <a href="https://learn.sparkfun.com/tutorials/how-to-use-a-multimeter" target="_blank">tutorial on multimeters</a>.   Then measure the voltage of the battery (touching the red lead of the multimeter to the positive terminal of the battery (marked by the + symbol on the battery) and the black lead to the negative terminal (marked by the -).   Here is a chart that shows the battery life estimates for an alkaline cell:
 
 | Alkaline Voltage Level and Range (V):  | Usability: |
 | ------------- | ------------- |
