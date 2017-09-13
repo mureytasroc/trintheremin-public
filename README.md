@@ -52,7 +52,7 @@ Given that alkaline 9v batteries (Trinity's Apex 9v batteries are alkaline) are 
 
 There is one more factor to consider, though, and that is that the TrinTheremin needs about 6.9v to run.   This is because the voltage regulator (a chip on the board that takes the voltage being supplied by the battery and regulates it at a constant 5v for the circuit to use) needs at least 6.75v to be able to output 5v as its supposed to.   This extra 1.75 volts it needs is called the "dropout voltage" -- this chart from the chip's <a href="http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" target="_blank">datasheet</a> was how I found that the dropout voltage is 1.75 volts:
 
-![](README%20Figures%20(ignore)/dropout.png?raw=true)
+![Alt text](https://drive.google.com/file/d/0B6zZaHEc6T-XYjBON3NNak95Mms/view?usp=sharing)
 
 
 
