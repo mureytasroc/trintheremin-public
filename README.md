@@ -70,7 +70,7 @@ The TrinTheremin has the same chip as an <a href="https://store.arduino.cc/usa/a
 #### Plans for future versions
 If any future versions of the TrinTheremin are produced these are some of the goals that did not get included in this initial version:
 
-* _A more efficient amplifier_ -- the amplifier circuit on the TrinTheremin right now is very simple, works with the ToneAC library, and has pretty good quality sound, however in future versions a more sophisticated amplifier circuit might be combined with a possible TrinTheremin Arduino library to keep the programming simplicity of ToneAC while improving quality and GREATLY improving efficiency (battery life would be improved immensely).
+* _A more efficient amplifier_ -- the amplifier circuit on the TrinTheremin right now is very simple to use and understand (both in software and in hardware), works with the ToneAC library, and has pretty good quality sound (meeting the goals of the board).   However in future versions a more sophisticated amplifier circuit might be combined with a possible TrinTheremin Arduino library to keep the software simplicity of ToneAC while improving quality and GREATLY improving efficiency (battery life would be improved immensely).
 
 * _A voltage divider circuit_ -- this is one of the easiest (and also most helpful) changes that could be introduced in future versions.   Essentially this would take the voltage of the battery, divide it in two (9v becomes 4.5, 7 becomes 3.5, etc), and feed it to an analog input (0v-5v yields a 0-1023 reading) on the microcontroller.   This would allow the programmer to measure the voltage of the battery.   With this they could create an integrated battery life check that would alert the user if the battery were low.
 
