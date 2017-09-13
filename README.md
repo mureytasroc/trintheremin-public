@@ -9,7 +9,7 @@ TrinTheremin, like the Sparkfun <a href="https://www.youtube.com/watch?v=2zZkeeQ
 | SRAM  | 2500  |
 | EEPROM  | 1000  |
 
-The flash is not all available, however as the board's "bootloader" (the software that allows you to upload Arduino code) takes up about 4kB, or 4000 bytes, leaving about 28kB usable for storing code.   The bootloader is already installed on all the boards.
+The flash is not all available, however the board's "bootloader" (the software that allows you to upload Arduino code) takes up about 4kB, or 4000 bytes, leaving about 28kB usable for storing code.   The bootloader is already installed on all the boards.
 
 Beyond the chip (and its dedicated hardware such as its crystal and resistors and capacitors), all the circuits on this board should be pretty familiar (possibly with the exception of the speaker's circuit).   See the <a href="https://github.com/TrinitySchoolComputerScience/TrinTheremin/tree/master/Circuit%20Design/Design%20Pictures" target="_blank">circuit design pictures</a> folder.   On the <a href="https://github.com/TrinitySchoolComputerScience/TrinTheremin/tree/master/Circuit%20Design/Design%20Pictures/Schematic/Close%20Ups/Left%20Side%20(Arduino)" target="_blank">left side</a> of the schematic is all the dedicated Arduino hardware, however the <a href="https://github.com/TrinitySchoolComputerScience/TrinTheremin/tree/master/Circuit%20Design/Design%20Pictures/Schematic/Close%20Ups/Right%20Side%20(Peripherals)" target="_blank">right side</a> shows the circuits for all the peripherals (the buttons, switch, light sensor, LEDs, etc).   Take a look at the right side to see how simple (and common) the circuits behind the peripherals are.
 
