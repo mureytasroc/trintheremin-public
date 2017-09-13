@@ -1,6 +1,6 @@
 # TrinTheremin (Version 1)
 ***
-##### About the Circuit
+#### About the Circuit
 TrinTheremin, like the Sparkfun <a href="https://www.youtube.com/watch?v=2zZkeeQr49g" target="_blank">Digital Sandboxes</a> used in CS1/CS2, is an all in one programmable <a href="https://learn.sparkfun.com/tutorials/what-is-a-circuit" target="_blank">circuit</a> that allows the user to process/control different inputs/outputs on the board.   Its <a href="http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf" target="_blank">ATMEGA microcontroller chip</a> has its own CPU (central processing unit; the brain of the device), flash memory (where your program is stored), SRAM (where the sketch creates and manipulates variables while running), and <a href="http://tronixstuff.com/2011/03/16/tutorial-your-arduinos-inbuilt-eeprom/" target="_blank">EEPROM</a> (NON-VOLATILE storage space programmers can access/use; EEPROM will keep its stored data even without electrical power (when the unit is off), as opposed to volatile memory (like SRAM) that would lose its data without electrical power).   While you probably won't need to use any EEPROM for this project (although feel free to <a href="https://learn.adafruit.com/memories-of-an-arduino/eeprom" target="_blank">do</a> so if you have a use for it), you will constantly be using the CPU and SRAM, as well as the flash memory (where your program lives).   See this chart for how much memory the microcontroller on the TrinTheremin (the ATMEGA 32u4) has of each main type (there are other memory types onboard that I won't go into):
 
 | Memory Type:  | Amount of storage (bytes): |
@@ -15,7 +15,7 @@ Beyond the chip (and its dedicated hardware such as its crystal and resistors an
 
 ---
 
-##### Usage
+#### Usage
 The TrinTheremin was purpose built for Trinity's CS2 and Advanced CS1 programs (specifically the physical computing and digital logic units, respectively), although it could be used in a wide variety of applications that use inputs and outputs involving sound and light.
 
 ###### Battery
@@ -67,7 +67,7 @@ The TrinTheremin has the same chip as an <a href="https://store.arduino.cc/usa/a
 
 
 -----
-##### Plans for future versions
+#### Plans for future versions
 If any future versions of the TrinTheremin are produced these are some of the goals that did not get included in this initial version:
 
 * _A more efficient amplifier_ -- the amplifier circuit on the TrinTheremin right now is very simple, works with the ToneAC library, and has pretty good quality sound, however in future versions a more sophisticated amplifier circuit might be combined with a possible TrinTheremin Arduino library to keep the programming simplicity of ToneAC while improving quality and GREATLY improving efficiency (battery life would be improved immensely).
