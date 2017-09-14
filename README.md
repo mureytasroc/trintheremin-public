@@ -60,7 +60,7 @@ There is one more factor to consider, though, and that is that the TrinTheremin 
 
 ![Alt text](https://lh6.googleusercontent.com/lWrjMS9h1VisHd2jblwWcIZCvB6T3cbFkIyPGV4HuM1q4z41pIC3KBnCVFCG9pPihMaPHdRw7znqtfU=w2880-h1332)
 
-
+If the board is acting wierd or blatantly executing programming commands incorrectly (that's not because of mistakes in the code) it is almost certainly because its does not have the necessary voltage (so measure it and replace the battery if necessary). There is a small range of voltages where the board will turn on but may work improperly.   
 
 ###### Programming
 The TrinTheremin has the same chip as an <a href="https://store.arduino.cc/usa/arduino-micro">Arduino Micro</a>, so it will behave almost identically to that board.   Important caveats to note:
