@@ -58,7 +58,7 @@ Given that alkaline 9v batteries (Trinity's Apex 9v batteries are alkaline) are 
 
 There is one more factor to consider, though, and that is that the TrinTheremin needs about 6.75v to run properly.   This is because the voltage regulator (a chip on the board that takes the voltage being supplied by the battery and regulates it at a constant 5v for the circuit to use) needs at least 6.75v to be able to output 5v as its supposed to.   This extra 1.75 volts it needs is called the "dropout voltage" -- this chart from the chip's <a href="http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" target="_blank">datasheet</a> was how I found that the dropout voltage is 1.75 volts (assuming 25C temperature and 500mA current draw):
 
-![Alt text](https://lh6.googleusercontent.com/g0h6ZlUbf8vDUef30ouRNzHvJDGXGTrId4AOgDkoz39PcbeC4zEaGPteGiBAVWs4md25TSsnVP6ja_4=w2880-h1418)
+![Alt text](https://lh6.googleusercontent.com/lWrjMS9h1VisHd2jblwWcIZCvB6T3cbFkIyPGV4HuM1q4z41pIC3KBnCVFCG9pPihMaPHdRw7znqtfU=w2880-h1332)
 
 
 
@@ -80,9 +80,12 @@ If any future versions of the TrinTheremin are produced these are some of the go
 
 * _A voltage divider circuit_ -- this is one of the easiest (and also most helpful) changes that could be introduced in future versions.   Essentially this would take the voltage of the battery, divide it in two (9v becomes 4.5, 7 becomes 3.5, etc), and feed it to an analog input (0v-5v yields a 0-1023 reading) on the microcontroller.   This would allow the programmer to measure the voltage of the battery.   With this they could create an integrated battery life check that would alert the user if the battery were low.
 
+* _Headphone jack_ -- a headphone jack could be added to the board in addition to the speaker so the user could play with headphones on.   The port would have a switch in it that would be conencted to a digital pin so the programmer could automatically turn off the speaker when headphones are plugged in.
+
 * _Reduced cost_ -- right now the TrinTheremin costs about 25$ per board to produce, however with hardware changes and different production methods, this could potentially be significantly reduced.   For reference an Arduino Micro costs about 22$ (with no inputs or outputs built in)
 
 * _Expanded documentation and a more seamless user interface -- maybe a website?_ -- Right now trintherem.in redirects to this github repository, however in the future a website dedicated to the TrinTheremin could be produced.
+
 
 ----
 
