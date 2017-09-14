@@ -23,7 +23,9 @@ The TrinTheremin was purpose built for Trinity's CS2 and Advanced CS1 programs (
 ###### Battery
 The TrinTheremin's battery should be connected to the 9v battery connector on the bottom of the board and stored in the clip under the slider (also on the bottom of the board).  
 
-(Picture)
+
+![Alt text](https://lh4.googleusercontent.com/d_zkedC-fj5NTU0bzUpK_hok-JD6QNM11K-yfOtXOhSUp6CBcilHKOaG1iWfpTPWU0COH4eCzPxmoWE=w2880-h1332-rw)
+
 
 Like any device, the TrinTheremin will eventually run out of battery.   Trinity's collection of Apex batteries have a 595mAh capacity.   Milliamp hours (mAh) are a unit of electrical charge (one milliamp hour is about 3.6 coulombs, a unit commonly taught in Trinity physics that is generally used when working with static electricity rather than circuits).   This means that the batteries can supply 595 mA of current for one hour. The TrinTheremin draws about 400 mA when the speaker is on at full volume so at minimum the TrinTheremin will run for about 1.5 hours (with everything running and its speaker on at full volume) continuously.   If you do not have the speaker on the device draws only about 25 mA, which will yield about a day of continuous use (so do not feel the need to turn off the device while programming it as having it on does not use up much battery life) To more accurately determine how much battery life the device has left (and without keeping track of how much time you have used it for), you can measure the remaining battery life with a multimeter (located in the top drawer in the drawers by the door in the computer science lab -- ask Mr. Rose or Mr. Gohde if you are unsure where this is) and a few quick calculations.
 
