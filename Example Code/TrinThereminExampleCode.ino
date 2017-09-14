@@ -186,7 +186,7 @@ void sound(float thisScale[],int thisLength){
     for(int i=0;i<thisLength;i++){
       float thisVal=thisScale[i]; //Save current position to thisVal
       if(abs(map(analogRead(lightSensorPin),minVal,maxVal,thisScale[0],thisScale[thisLength-1])-thisVal)<closestVal){
-        closestVal=abs(map(analogRead(lightSensorPin),200,avgReading,thisScale[0],thisScale[thisLength-1])-thisVal);
+        closestVal=abs(map(analogRead(lightSensorPin),minVal,maxVal,thisScale[0],thisScale[thisLength-1])-thisVal);
         closestPos=i;
       }
     }
@@ -197,7 +197,7 @@ void sound(float thisScale[],int thisLength){
     for(int i=0;i<thisLength;i++){
       float thisVal=thisScale[i];
       if(abs(map(analogRead(lightSensorPin),minVal,maxVal,thisScale[0],thisScale[thisLength-1])-thisVal)<closestVal){
-        closestVal=abs(map(analogRead(lightSensorPin),600,800,thisScale[0],thisScale[thisLength-1])-thisVal);
+        closestVal=abs(map(analogRead(lightSensorPin),minVal,maxVal,thisScale[0],thisScale[thisLength-1])-thisVal);
         closestPos=i;
       }
     }
