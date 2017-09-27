@@ -1,6 +1,24 @@
 # TrinTheremin (Version 1)
 ***
-![Alt text](https://lh4.googleusercontent.com/Jk7nKPewDZVu9VPJGR1joEcyRaNRxpO3K3WOanZ6e4M7o5WhJWx9AhLAxRkVvo7fBl8CIeShNT1gEnM=w2880-h1332-rw)
+![Alt text](https://drive.google.com/uc?export=view&id=0B6zZaHEc6T-XQjRwel9NQS1BT00)
+---
+#### Important Notes -- Read before use
+* Note: The bottom of the boards get very hot due to the amplifier circuit (the amount of heat is fine/within spec for the circuits but can be uncomfortable to touch).   If the speaker is making noise, the bottom of the board will be hot.   Do not handle the bottom of the board when the board is powered (because depending on what's on your hands your hands could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, its just good practice).   Especially avoid touching the bottom of the board if the speaker is making noise (volume does not affect amount of heat produced) because it will be hot.   When the speaker is not making noise the board is not hot at all.   In future versions the heat produced will significantly be reduced (and will not be uncomfortable to the touch) with a more efficient (but more sophisticated/complicated) amplifier circuit. 
+
+* If you are using the baord without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit.
+
+* This version (and all versions) are best used with a case (see the case folder for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
+
+* The circuit will not work properly if the battery is depleted (see battery section below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see battery section below), then follow the instructions in the battery section of this Readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
+
+* The board behaves like an Arduino Micro.   See the "Programming" section below.
+
+* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
+
+* 
+
+---
+### Expanded Documentation
 ---
 #### About the Circuit
 TrinTheremin, like the Sparkfun <a href="https://www.youtube.com/watch?v=2zZkeeQr49g" target="_blank">Digital Sandboxes</a> used in CS1/CS2, is an all in one programmable <a href="https://learn.sparkfun.com/tutorials/what-is-a-circuit" target="_blank">circuit</a> that allows the user to process/control different inputs/outputs on the board.   Its <a href="http://www.atmel.com/Images/Atmel-7766-8-bit-AVR-ATmega16U4-32U4_Datasheet.pdf" target="_blank">ATMEGA microcontroller chip</a> has its own CPU (central processing unit; the brain of the device), flash memory (where your program is stored), SRAM (where the sketch creates and manipulates variables while running), and <a href="http://tronixstuff.com/2011/03/16/tutorial-your-arduinos-inbuilt-eeprom/" target="_blank">EEPROM</a> (NON-VOLATILE storage space programmers can access/use; EEPROM will keep its stored data even without electrical power (when the unit is off), as opposed to volatile memory (like SRAM) that would lose its data without electrical power).   While you probably won't need to use any EEPROM for this project (although feel free to <a href="https://learn.adafruit.com/memories-of-an-arduino/eeprom" target="_blank">do</a> so if you have a use for it), you will constantly be using the CPU and SRAM, as well as the flash memory (where your program lives).   See this chart for how much memory the microcontroller on the TrinTheremin (the ATMEGA 32u4) has of each main type (there are other memory types onboard that I won't go into):
@@ -26,7 +44,7 @@ The TrinTheremin was purpose built for Trinity's CS2 and Advanced CS1 programs (
 The TrinTheremin's battery should be connected to the 9v battery connector on the bottom of the board and stored in the clip under the slider (also on the bottom of the board).  
 
 
-![Alt text](https://lh6.googleusercontent.com/Lo_HOMFbsOYrCJuCsar8dh3Nv1yV8LCxn8Qi38KI90Z_BTZqh5kfDFc5T0J5Y7q8338YojiahjN6BEI=w2880-h1332-rw)
+![Alt text](https://drive.google.com/uc?export=view&id=0B6zZaHEc6T-XSmZBeUhkNjVtTHc)
 
 
 Like any device, the TrinTheremin will eventually run out of battery.   Trinity's collection of Apex batteries have a 595mAh capacity.   Milliamp hours (mAh) are a unit of electrical charge (one milliamp hour is about 3.6 coulombs, a unit commonly taught in Trinity physics that is generally used when working with static electricity rather than circuits).   This means that the batteries can supply 595 mA of current for one hour. The TrinTheremin draws about 400 mA when the speaker is on at full volume so at minimum the TrinTheremin will run for about 1.5 hours (with everything running and its speaker on at full volume) continuously.   If you do not have the speaker on the device draws only about 25 mA, which will yield about a day of continuous use (so do not feel the need to turn off the device while programming it as having it on does not use up much battery life) To more accurately determine how much battery life the device has left (and without keeping track of how much time you have used it for), you can measure the remaining battery life with a multimeter (located in the top drawer in the drawers by the door in the computer science lab -- ask Mr. Rose or Mr. Gohde if you are unsure where this is) and a few quick calculations.
@@ -58,7 +76,7 @@ Given that alkaline 9v batteries (Trinity's Apex 9v batteries are alkaline) are 
 
 There is one more factor to consider, though, and that is that the TrinTheremin needs about 6.75v to run properly.   This is because the voltage regulator (a chip on the board that takes the voltage being supplied by the battery and regulates it at a constant 5v for the circuit to use) needs at least 6.75v to be able to output 5v as its supposed to.   This extra 1.75 volts it needs is called the "dropout voltage" -- this chart from the chip's <a href="http://www.st.com/content/ccc/resource/technical/document/datasheet/41/4f/b3/b0/12/d4/47/88/CD00000444.pdf/files/CD00000444.pdf/jcr:content/translations/en.CD00000444.pdf" target="_blank">datasheet</a> was how I found that the dropout voltage is 1.75 volts (assuming 25C temperature and 500mA current draw):
 
-![Alt text](https://lh6.googleusercontent.com/lWrjMS9h1VisHd2jblwWcIZCvB6T3cbFkIyPGV4HuM1q4z41pIC3KBnCVFCG9pPihMaPHdRw7znqtfU=w2880-h1332)
+![Alt text](https://drive.google.com/uc?export=view&id=0B6zZaHEc6T-XYjBON3NNak95Mms)
 
 If the board is acting wierd or blatantly executing programming commands incorrectly (that's not because of mistakes in the code) it is almost certainly because its does not have the necessary voltage (so measure it and replace the battery if necessary). There is a small range of voltages where the board will turn on but may work improperly.   
 
