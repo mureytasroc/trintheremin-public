@@ -16,5 +16,9 @@
    - First, add F Major by replacing the G scale.
    - Then, add back the G scale and incorporate F Major as a fifth option.
    
-
+4. Find the Circuit Design picture of the BoardTop and the BoardBottom.
+   - What do the green markings indicate?
+   - What do the red markings indicate?
+   - What do the white markings indicate?
+   - What do the blue markings indicate?
 
