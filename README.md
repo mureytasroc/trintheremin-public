@@ -2,20 +2,19 @@
 ***
 ![Alt text](https://drive.google.com/uc?export=view&id=0B6zZaHEc6T-XQjRwel9NQS1BT00)
 ---
-#### Important Notes -- Read before use
+#### Important Notes -- Read Before Use
 * The bottom of the boards get very hot due to the amplifier circuit (the amount of heat is fine/within spec for the circuits but can be uncomfortable to touch).   If the speaker is making noise, the bottom of the board will be hot.   Do not handle the bottom of the board when the board is powered (because depending on what's on your hands your hands could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, its just good practice).   Especially avoid touching the bottom of the board if the speaker is making noise because it will be hot (volume does not affect amount of heat produced).   When the speaker is not making noise the board is not hot at all.   In future versions the heat produced will significantly be reduced (and will not be uncomfortable to the touch) with a more efficient (but more sophisticated/complicated) amplifier circuit. 
 
 * If you are using the board without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit (see above note).
 
 * This version (and all versions) are best used with a case (see the case folder for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
 
-* The circuit will not work properly if the battery is depleted (see battery section below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see battery section below), then follow the instructions in the battery section of this Readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
+* The circuit will not work properly if the battery is depleted (see battery section below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see battery section below), then follow the instructions in the battery section of this readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
 
 * The board behaves like an Arduino Micro.   See the "Programming" section below.
 
 * When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
 
-* 
 
 ---
 ### Expanded Documentation
@@ -91,6 +90,19 @@ The TrinTheremin has the same chip as an <a href="https://store.arduino.cc/usa/a
 
 
 -----
+
+###### Example Code Notes
+
+* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
+
+* The calibration procedure in the example code is this: 
+  i. When one LED is blinking do not cover the sensor at all -- it is measuring the ambient light levels; 
+  ii. Once the speaker makes a noise and the LED stops blinking cover the sensor with your hand
+  iii. Once both LEDs stop blinking and then light up in a pattern the calibration process is complete
+  
+* The toneAc is used to control the speaker.   To download toneAc see this <a href="https://bitbucket.org/teckel12/arduino-toneac/wiki/Home">link</a>.   Here is the toneAc <a href="https://playground.arduino.cc/Code/ToneAC">reference</a>.
+
+-------
 #### Plans for future versions
 If any future versions of the TrinTheremin are produced these are some of the goals that did not get included in this initial version:
 
