@@ -15,9 +15,9 @@
 
 * When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
 
-* See the [example code](#Example Code Notes) section of this readme on how to conduct the board calibration.
+* See the [example code](#Example%20Code%20Notes) section of this readme on how to conduct the board calibration.
 
-* See the [expanded documentation](#Expanded Documentation) for more information on the board as well as expanded procedures and notes.
+* See the [expanded documentation](#Expanded%20Documentation) for more information on the board as well as expanded procedures and notes.
 
 ---
 ### Expanded Documentation
