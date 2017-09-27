@@ -12,7 +12,7 @@
 2. Examine the code contained in *TrinThereminExampleCode.ino*. This is the code that controls the behavior of the TrinTheremin. It is written in the Arduino programming language because the TrinTheremin essentially embeds an Arduino Micro into a custom circuit board. 
    - Label each component on your hand-drawn diagram with both the pin number and identifier name given to it in *TrinThereminExampleCode.ino*
 
-3. Add F Major as a new scale.
+3. Add two octaves of F Major as a new scale.
    - First, add F Major by replacing the G scale.
    - Then, add back the G scale and incorporate F Major as a fifth option.
    
