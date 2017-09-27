@@ -10,7 +10,7 @@
    - Label all components used for input/output.
 
 2. Examine the code contained in *TrinThereminExampleCode.ino*. This is the code that controls the behavior of the TrinTheremin. It is written in the Arduino programming language because the TrinTheremin essentially embeds an Arduino Micron into a custom circuit board. 
-   - Label each component on yur hand-drawn diagram with both the pin number and identifier name given to it in *TrinThereminExampleCode.ino*
+   - Label each component on your hand-drawn diagram with both the pin number and identifier name given to it in *TrinThereminExampleCode.ino*
 
 3. 
 
