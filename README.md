@@ -5,7 +5,7 @@
 #### Important Notes -- Read before use
 * The bottom of the boards get very hot due to the amplifier circuit (the amount of heat is fine/within spec for the circuits but can be uncomfortable to touch).   If the speaker is making noise, the bottom of the board will be hot.   Do not handle the bottom of the board when the board is powered (because depending on what's on your hands your hands could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, its just good practice).   Especially avoid touching the bottom of the board if the speaker is making noise because it will be hot (volume does not affect amount of heat produced).   When the speaker is not making noise the board is not hot at all.   In future versions the heat produced will significantly be reduced (and will not be uncomfortable to the touch) with a more efficient (but more sophisticated/complicated) amplifier circuit. 
 
-* If you are using the baord without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit.
+* If you are using the baord without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit (see above note).
 
 * This version (and all versions) are best used with a case (see the case folder for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
 
