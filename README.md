@@ -7,18 +7,17 @@
 
 * If you are using the board without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit (see above note).
 
-* This version (and all versions) are best used with a case (see the case folder for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
+* This version (and all versions) are best used with a case (see the [case](Case) for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
 
-* The circuit will not work properly if the battery is depleted (see battery section below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see battery section below), then follow the instructions in the battery section of this readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
+* The circuit will not work properly if the battery is depleted (see [battery section](#Battery) below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see [battery section](#Battery) below), then follow the instructions in the [battery section](#Battery) of this readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
 
 * The board behaves like an Arduino Micro.   See the "Programming" section below.
 
 * When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
 
-* See the example code section of this readme on how to conduct the board calibration.
+* See the [example code](#Example Code Notes) section of this readme on how to conduct the board calibration.
 
-* See the expanded documentation for more information on the board as well as expanded procedures and notes.
-
+* See the [expanded documentation](#Expanded Documentation) for more information on the board as well as expanded procedures and notes.
 
 ---
 ### Expanded Documentation
