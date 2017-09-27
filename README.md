@@ -5,9 +5,9 @@
 #### Important Notes -- Read Before Use
 * The bottom of the boards get very hot due to the amplifier circuit (the amount of heat is fine/within spec for the circuits but can be uncomfortable to touch).   If the speaker is making noise, the bottom of the board will be hot.   Do not handle the bottom of the board when the board is powered (because depending on what's on your hands your hands could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, its just good practice).   Especially avoid touching the bottom of the board if the speaker is making noise because it will be hot (volume does not affect amount of heat produced).   When the speaker is not making noise the board is not hot at all.   In future versions the heat produced will significantly be reduced (and will not be uncomfortable to the touch) with a more efficient (but more sophisticated/complicated) amplifier circuit. 
 
-* If you are using the board without a case hold it by the battery to avoid touching the bottom of the board and to protect the circuit (see above note).
+* Because of the heat produced by the amplifier (see above note) and to protect the circuit the minimum case material that the board should have when being played or programmed is the top panel.   After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.
 
-* This version (and all versions) are best used with a case (see the [case](Case) for laser cutting plans) for ergonomics and to elimiate the need to hold the board in any special way, although Advanced CS1 will not be making cases for the boards (CS2 will be).
+* This version (and all versions) are best used with a full case and horn (see the [case folder](Case) and the [horn folder](Horn) ) for ergonomics and sound quality, although Advanced CS1 will not be making cases for the boards (CS2 will be).
 
 * The circuit will not work properly if the battery is depleted (see [battery section](#battery) below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see [battery section](#battery) below), then follow the instructions in the [battery section](#battery) of this readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
 
@@ -102,8 +102,10 @@ The TrinTheremin has the same chip as an <a href="https://store.arduino.cc/usa/a
   i. When one LED is blinking do not cover the sensor at all -- it is measuring the ambient light levels; 
   ii. Once the speaker makes a noise and the LED stops blinking cover the sensor with your hand
   iii. Once both LEDs stop blinking and then light up in a pattern the calibration process is complete
-  
-* The toneAc is used to control the speaker.   To download toneAc see this <a href="https://bitbucket.org/teckel12/arduino-toneac/wiki/Home">link</a>.   Here is the toneAc <a href="https://playground.arduino.cc/Code/ToneAC">reference</a>.
+
+* The autoplay feature can work very well if you put your hand over the dancing LED and the sensor.   It will work fine if you leave it in ambient light, but the more ambient light there is, the worse it will work (this cannot be fixed in calibration -- think about it like the LED's light is getting drowned out).
+
+* The toneAc library is used to control the speaker.   To download toneAc see this <a href="https://bitbucket.org/teckel12/arduino-toneac/wiki/Home">link</a>.   Here is the toneAc <a href="https://playground.arduino.cc/Code/ToneAC">reference</a>.
 
 -------
 #### Plans for future versions
