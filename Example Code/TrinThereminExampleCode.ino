@@ -191,7 +191,7 @@ void loop() {
 
 //===========================SOUND FUNCTION=========================
 void sound(float thisScale[]){
-  int thisLength=(int)(sizeof(thisScale)); //Number of notes in scale
+  int thisLength=(int)(sizeof(thisScale)/sizeof(int)); //Number of notes in scale
   float minVal=0; //Minimum light sensor value (determined below)
   float maxVal=0; //Maximum light sensor value (determined below)
   int closestPos=0; //The note position in the scale array (TBD)
