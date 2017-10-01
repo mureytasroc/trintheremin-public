@@ -1,8 +1,8 @@
 # Using the TrinTheremin
 
 ## Basic Steps
-1. **Turn on the Power Switch**. Ensure there is a fresh 9v battery installed in the TrinTheremin.
-2. **Calibrate the TrinTheremin**. The flashing LED's indicate a 5 second Calibration Mode.  First, press the photoresistor to indicate a minimum value. Then, remove any obstacle from blocking the photoresistor to allow the ambient light in the room to indicate a maximum value.
+1. **Plug the board into a USB port**. If you want to use the TrinTheremin on battery power: plug in a battery (see home page readme), and turn it on with the power switch.
+2. **Calibrate the TrinTheremin**. When the unit first turns on, hold the board normally to allow the sensor to read the ambient light level.   Once the board makes a sound, place your hand over the sensor so it can read a low value.   When the two LEDs stop blinking and flicker the calibration is complete.
 3. **Play the TrinTheremin**. Be sure to avoid touching the underside of the board. The amplifier cicuit for the speaker can get hot.
 
 ## Learning Activities
