@@ -1,13 +1,10 @@
 /*
 Example Code for the TrinTheremin
-
 Written by Charles Cunningham in 2017
 In assosiation with the Trinity School Computer Science department
 Written for the TrinTheremin project, initial version (v1)
-
 Visit for more info and resources for the TrinTheremin project:
 www.trintherem.in
-
 */
 
 //==================================================================
@@ -39,20 +36,16 @@ space on the Arduino as a variable or constant*/
 //Scales
 float scale0[] = {261.63,293.66,329.63,349.23,392.00,440.00,
 493.88,523.25}; //Major C Scale
-byte scaleLength0=8; //Scale 0 Length
 
 float scale1[]={440,495,556.875,660,742.5}; //Pentatonic Scale
-byte scaleLength1=5; //Scale 1 Length
 
 float scale2[]={61.7354,73.4162,97.9989,123.4708,146.8324,
 195.9977,246.9417,329.6276,391.9954,493.8833,
 659.2551,783.9909}; //Pentatonic D Scale
-byte scaleLength2=12; //Scale 2 Length
 
 float scale3[]={196.00,220.00,246.94,261.63,293.66,
 329.63,369.99,392.00,440.00,493.88,523.25,587.33,659.25,
 739.99,783.99};//G Scale
-byte scaleLength3=15; //Scale 3 Length
 
 //Other Variables
 unsigned long ts=0L; //Counter to enact delays without breaking loop
@@ -167,18 +160,18 @@ void loop() {
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
       int scaleSliderVal=analogRead(rightSliderPin);
       if(scaleSliderVal<250){
-        sound(scale1,scaleLength1);
+        sound(scale1);
       }
       else{ //a
         if(scaleSliderVal<500){
-          sound(scale2,scaleLength2); //Call the sound function
+          sound(scale2); //Call the sound function
         }
         else{ //b
           if(scaleSliderVal<750){
-            sound(scale0,scaleLength0); //Call the sound function
+            sound(scale0); //Call the sound function
           }
           else{ //c
-            sound(scale3,scaleLength3); //Call the sound function
+            sound(scale3); //Call the sound function
           } //c
         } //b
       } //a
@@ -197,7 +190,8 @@ void loop() {
 
 
 //===========================SOUND FUNCTION=========================
-void sound(float thisScale[],int thisLength){
+void sound(float thisScale[]){
+  int thisLength=(int)(sizeof(thisScale)); //Number of notes in scale
   float minVal=0; //Minimum light sensor value (determined below)
   float maxVal=0; //Maximum light sensor value (determined below)
   int closestPos=0; //The note position in the scale array (TBD)
