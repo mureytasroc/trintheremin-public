@@ -226,7 +226,7 @@ void sound(float thisScale[]){
   //Note is Picked---------------^^^--------------------------------
 
   int volVal=map(analogRead(leftSliderPin),0,1000,0,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
-  //^^^ Sets volume (0-9.5 is a usable range)
+  //^^^ Sets volume (0-10 is a usable range)
   
   toneAC(thisScale[closestPos],volVal);
   //toneAC(note,volume (0-10)); 
