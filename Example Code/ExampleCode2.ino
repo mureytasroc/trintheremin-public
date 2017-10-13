@@ -135,9 +135,9 @@ void setup() {
  
   Serial.begin(9600);
   Serial.print("minReading:");
-  Serial.print(minReading:);
+  Serial.print(minReading);
   Serial.print("maxReading:");
-  Serial.print(maxReading:);
+  Serial.print(maxReading);
 }//setup()
 
 
