@@ -156,6 +156,9 @@ void loop() {
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
       int scaleSliderVal=analogRead(rightSliderPin);
       
+      Serial.print("Volume Slider:");
+      Serial.println(scaleSliderVal);
+
       if(scaleSliderVal<250){
         sound(scale1);
       }
@@ -192,10 +195,15 @@ void sound(float thisScale[]){
   } 
   Serial.print("closestPos:");
   Serial.println(closestPos);
+
   int volVal=map(analogRead(leftSliderPin),0,1000,0,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
   //^^^ Sets volume (0-10 is a usable range)
+  Serial.print("Vol (0-10):");
+  Serial.println(volVal);
   
   toneAC(thisScale[closestPos],volVal);//toneAC(note,volume (0-10)); 
+  Serial.print("Note being played:");
+  Serial.println(thisScale[closestPos]);
   
   analogWrite(blueLedPin, map(thisScale[closestPos],thisScale[0],thisScale[scaleLength-1],0,255)); //overflow
   //^^^ Sets blue LED intensity proportional to the current note
