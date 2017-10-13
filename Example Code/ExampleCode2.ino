@@ -191,7 +191,7 @@ void sound(float thisScale[]){
     closestPos=map(sensorValue,minReading+500,maxReading+300,0,scaleLength);
   } 
   Serial.print("closestPos:");
-  Serial.print(closestPos);
+  Serial.println(closestPos);
   int volVal=map(analogRead(leftSliderPin),0,1000,0,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
   //^^^ Sets volume (0-10 is a usable range)
   
