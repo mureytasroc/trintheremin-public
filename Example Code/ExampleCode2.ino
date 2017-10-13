@@ -133,7 +133,12 @@ void setup() {
   delay(200);                     //Delay for 200ms
   //End Startup Light Sequence--------------------^^^----------------
  
- }//setup()
+  Serial.begin(9600);
+  Serial.print("minReading:");
+  Serial.print(minReading:);
+  Serial.print("maxReading:");
+  Serial.print(maxReading:);
+}//setup()
 
 
 void loop() {
@@ -175,6 +180,7 @@ void loop() {
 
 void sound(float thisScale[]){
   int scaleLength=(int)(sizeof(thisScale)/sizeof(int)); //Number of notes in scale
+  int closestPos=0;
 
   if(autoPlay==false){
     int sensorValue = analogRead(lightSensorPin);
