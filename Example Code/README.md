@@ -25,5 +25,6 @@
 
 To-Do:
 --------------
--Pure max/min for calibration
--Quantized playing (for the non-sequential note problem)
+- Pure max/min for calibration
+
+- Quantized playing (for the non-sequential note problem)
