@@ -22,3 +22,8 @@
    - What do the white markings indicate?
    - What do the blue markings indicate?
 
+
+To-Do:
+--------------
+-Pure max/min for calibration
+-Quantized playing (for the non-sequential note problem)
