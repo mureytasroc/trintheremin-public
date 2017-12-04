@@ -160,18 +160,18 @@ void loop() {
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
       int scaleSliderVal=analogRead(rightSliderPin);
       if(scaleSliderVal<250){
-        sound(scale1);
+        sound(scale0,(sizeof(scale0)/sizeof(int)/2)); //Call the sound function (array,length)
       }
       else{ //a
         if(scaleSliderVal<500){
-          sound(scale2); //Call the sound function
+          sound(scale1,(sizeof(scale1)/sizeof(int)/2)); //Call the sound function (array,length)
         }
         else{ //b
           if(scaleSliderVal<750){
-            sound(scale0); //Call the sound function
+            sound(scale2,(sizeof(scale2)/sizeof(int)/2)); //Call the sound function (array,length)
           }
           else{ //c
-            sound(scale3); //Call the sound function
+            sound(scale3,(sizeof(scale3)/sizeof(int)/2)); //Call the sound function (array,length)
           } //c
         } //b
       } //a
@@ -190,8 +190,7 @@ void loop() {
 
 
 //===========================SOUND FUNCTION=========================
-void sound(float thisScale[]){
-  int thisLength=(int)(sizeof(thisScale)/sizeof(int)); //Number of notes in scale
+void sound(float thisScale[], int thisLength){
   float minVal=0; //Minimum light sensor value (determined below)
   float maxVal=0; //Maximum light sensor value (determined below)
   int closestPos=0; //The note position in the scale array (TBD)
