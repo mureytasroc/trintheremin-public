@@ -212,7 +212,7 @@ void sound(float thisScale[], int thisLength){
     }
   }
   else{ //If autoplay is on (notes optimized for autoplay)
-    minVal=lowAvg+500; //Dancing LED provides its own light so constants are added to the ambient light levels.
+    minVal=lowAvg+300; //Dancing LED provides its own light so constants are added to the ambient light levels.
     maxVal=avgReading+300; //These numbers were found to work best with the dancing LED.
     for(int i=0;i<thisLength;i++){
       float thisVal=thisScale[i];
