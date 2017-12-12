@@ -1,7 +1,7 @@
 /*
-Example Code for the TrinTheremin
-Written by Charles Cunningham in 2017
-In assosiation with the Trinity School Computer Science department
+Example Code 2 for the TrinTheremin
+Written by Charles Cunningham and J. Gohde in 2017
+In association with the Trinity School Computer Science department
 Written for the TrinTheremin project, initial version (v1)
 Visit for more info and resources for the TrinTheremin project:
 www.trintherem.in
@@ -49,8 +49,7 @@ float scale3[]={196.00,220.00,246.94,261.63,293.66,
 unsigned long ts=0L; //Counter to enact delays without breaking loop
 unsigned long ts2=0L; //Counter to enact delays without breaking loop
 float maxReading=0; //Ambient sensor reading for calibration
-float minReading=0; //Average sensor reading when sensor is covered
-float counter=0; //Iteration counter for calibration
+float minReading=1024; //Average sensor reading when sensor is covered
 boolean autoPlay=false; //Boolean autoplay toggle
 
 
@@ -70,53 +69,23 @@ void setup() {
   //Calibration-------------------------------vvv------------------
 
   ts=millis(); //Start counter at current clock time
-  ts2=millis(); //Start counter for alternating LEDs
-  while(millis()-ts<3500){ //While clock time - start time is < 3.5s
-    counter++; //Running counter of how many readings are taken
-    maxReading+=analogRead(0); //Add current reading to avgReading
-
+  while(millis()-ts<5000){ //While clock time - start time is < 5s
+    int reading=analogRead(0); //Add current reading to avgReading
+    if(reading > maxReading) maxReading = reading;
+    else if (reading < minReading) minReading = reading;
+    
     //Blue LED blinking to show ambient calibration in progress
-    if(millis()-ts2>400){ //For the first 400 milliseconds:
+    if(millis()%800 ==0){ //For the first 400 milliseconds:
       digitalWrite(blueLedPin,HIGH); //Blue light on
     }
-    if(millis()-ts2>800){ //For the second 400 milliseconds:
+    else if(millis()%400==0){ //For the second 400 milliseconds:
       digitalWrite(blueLedPin,LOW); //Blue LED off
-      ts2=millis();
     }
-  //End of Calibration Light Display
-  }  //Max Reading
+  }  
   
-  maxReading/=counter;//set maxReading to the average sensor reading
-
   digitalWrite(blueLedPin,LOW);
   digitalWrite(greenLedPin,LOW); //Set both LEDs to LOW to tell the user to put their hand over the sensor
-  toneAC(500,4); //Play sound to tell user to put their hand over the sensor
-  delay(1500); //Gives the user time to put their hand on the sensor 
-  noToneAC();
-  
-  ts=millis(); //Start counter at current clock time
-  ts2=millis(); //Start counter for alternating LEDs
-  counter=0; //Reset counter
-  while(millis()-ts<3500){ //While clock time - start time is < 3.5s
-    counter++; //Running counter of how many readings are taken
-    minReading+=analogRead(0); //Add current reading to lowAvg
-    
-    //Both LEDs blinking to show low level calibration in progress
-    if(millis()-ts2>400){ //For the first 400 milliseconds:
-      digitalWrite(blueLedPin,HIGH); //Blue light on
-      digitalWrite(greenLedPin,HIGH); //Green light on
-    }
-    if(millis()-ts2>800){ //For the second 400 milliseconds:
-      digitalWrite(blueLedPin,LOW); //Blue LED off
-      digitalWrite(greenLedPin,LOW); //Green LED off
-      ts2=millis();
-    }
-  //End of Calibration Light Display
-  }  //Min
-
-  minReading/=counter;//set avgLowReading to the average sensor reading
-
-
+ 
   //Begin Startup Light Sequence----------------------vvv-----------------
   digitalWrite(greenLedPin,LOW);  //All lights off
   digitalWrite(blueLedPin,LOW);   
@@ -151,61 +120,55 @@ void loop() {
     analogWrite(danceLedPin,0); 
   }
 
-
-  //Set current scale (depending on right slider)----------vvv------
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
       int scaleSliderVal=analogRead(rightSliderPin);
       
-      Serial.print("Volume Slider:");
-      Serial.println(scaleSliderVal);
+      Serial.print("Scale Slider:");Serial.println(scaleSliderVal);
+      Serial.print("minReading:");Serial.println(minReading);
+      Serial.print("maxReading:");Serial.println(maxReading);
 
-      if(scaleSliderVal<250){
-        sound(scale1);
-      }
-      else if(scaleSliderVal<500){
-          sound(scale2); 
-      }else if(scaleSliderVal<750){
-          sound(scale0); 
-      }else{ 
-          sound(scale3); 
-      } 
-
-    
+      if(scaleSliderVal<250) sound(scale0, 8);
+      else if(scaleSliderVal<500) sound(scale1, 5); 
+      else if(scaleSliderVal<750) sound(scale2, 12 ); 
+      else sound(scale3, 15 ); 
   }
-  else{ //play switch is off
+  else{ 
     noToneAC(); //Turn off speaker
-    analogWrite(blueLedPin,0); //Turn off blue LED
-  }
+    analogWrite(blueLedPin,LOW); 
+  }//play switch is off
   
 } //loop()
 
 
 
-void sound(float thisScale[]){
-  int scaleLength=(int)(sizeof(thisScale)/sizeof(int)); //Number of notes in scale
+void sound(float thisScale[], int num_notes){
+  int scaleLength= num_notes; //Number of notes in scale
+  Serial.print("scaleLength:");Serial.println(scaleLength);
+  Serial.print(sizeof(thisScale));Serial.println(sizeof(float));
+
   int closestPos=0;
 
-  if(autoPlay==false){
-    int sensorValue = analogRead(lightSensorPin);
-    closestPos=map(sensorValue,minReading,maxReading,0,scaleLength);  
-  }
-  else{ //(notes optimized for autoplay)
-    int sensorValue = analogRead(lightSensorPin);
-    closestPos=map(sensorValue,minReading+500,maxReading+300,0,scaleLength);
-  } 
-  Serial.print("closestPos:");
-  Serial.println(closestPos);
+  int sensorValue = analogRead(lightSensorPin);
+  Serial.print("sensorValue:");Serial.println(sensorValue);
+  
+  if (sensorValue < minReading) sensorValue = minReading;
+  else if (sensorValue > maxReading) sensorValue = maxReading;
+  
+  Serial.print("sensorValue:");Serial.println(sensorValue);
+
+  if(autoPlay==false) closestPos=map(sensorValue,minReading,maxReading,0,scaleLength);  
+  else  closestPos=map(sensorValue,minReading+500,maxReading+300,0,scaleLength); //Autoplay, so notes optimized for autoplay
+  
+  Serial.print("closestPos:");Serial.println(closestPos);
 
   int volVal=map(analogRead(leftSliderPin),0,1000,0,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
   //^^^ Sets volume (0-10 is a usable range)
-  Serial.print("Vol (0-10):");
-  Serial.println(volVal);
   
-  toneAC(thisScale[closestPos],volVal);//toneAC(note,volume (0-10)); 
-  Serial.print("Note being played:");
-  Serial.println(thisScale[closestPos]);
+  Serial.print("Vol (0-10):");Serial.println(volVal);
   
-  analogWrite(blueLedPin, map(thisScale[closestPos],thisScale[0],thisScale[scaleLength-1],0,255)); //overflow
-  //^^^ Sets blue LED intensity proportional to the current note
+  toneAC(thisScale[closestPos],volVal);
+  Serial.print("Note being played:");Serial.println(thisScale[closestPos]);
+  
+  analogWrite(blueLedPin, map(thisScale[closestPos],thisScale[0],thisScale[scaleLength-1],0,255)); //Sets blue LED intensity proportional to the current note
 
 }//sound()
