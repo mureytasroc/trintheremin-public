@@ -1,7 +1,7 @@
 /*
-Example Code 2 for the TrinTheremin
-Written by Charles Cunningham and J. Gohde in 2017
-In association with the Trinity School Computer Science department
+Example Code for the TrinTheremin
+Written by Charles Cunningham in 2017
+In assosiation with the Trinity School Computer Science department
 Written for the TrinTheremin project, initial version (v1)
 Visit for more info and resources for the TrinTheremin project:
 www.trintherem.in
@@ -56,6 +56,7 @@ boolean autoPlay=false; //Boolean autoplay toggle
 
 //==============================SETUP===============================
 void setup() {
+  
   //configure inputs
   pinMode(switchPin,INPUT); //Set the switch as an input
   pinMode(topButtonPin,INPUT); //Set the bot button as an input
@@ -103,14 +104,12 @@ void setup() {
   //End Startup Light Sequence--------------------^^^----------------
  
   Serial.begin(9600);
-  Serial.print("minReading:");
-  Serial.print(minReading);
-  Serial.print("maxReading:");
-  Serial.print(maxReading);
 }//setup()
 
 
 void loop() {
+Serial.print("left:");Serial.println(analogRead(A2));
+Serial.print("right:");Serial.println(analogRead(A1));
 
   if(digitalRead(topButtonPin)==HIGH){
     autoPlay=true;
@@ -121,16 +120,16 @@ void loop() {
   }
 
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
-      int scaleSliderVal=analogRead(rightSliderPin);
+      int scaleSliderVal=analogRead(leftSliderPin);
       
       Serial.print("Scale Slider:");Serial.println(scaleSliderVal);
       Serial.print("minReading:");Serial.println(minReading);
       Serial.print("maxReading:");Serial.println(maxReading);
 
-      if(scaleSliderVal<250) sound(scale0, 8);
-      else if(scaleSliderVal<500) sound(scale1, 5); 
-      else if(scaleSliderVal<750) sound(scale2, 12 ); 
-      else sound(scale3, 15 ); 
+      if(scaleSliderVal<50) sound(scale0, -1);//top - play continuous notes
+      else if(scaleSliderVal<575) sound(scale1, 5); //top half- G major pent = E minor pent GABDE
+      else if (scaleSliderVal<1100) sound(scale2, 12 ); //bottom half- C major pent = A minor pent CDEGA
+      else sound(scale3, 15 ); //bottom - play D major pent = B minor pent DEF#AB
   }
   else{ 
     noToneAC(); //Turn off speaker
@@ -140,35 +139,34 @@ void loop() {
 } //loop()
 
 
-
 void sound(float thisScale[], int num_notes){
-  int scaleLength= num_notes; //Number of notes in scale
-  Serial.print("scaleLength:");Serial.println(scaleLength);
-  Serial.print(sizeof(thisScale));Serial.println(sizeof(float));
 
-  int closestPos=0;
+  
+  if (num_notes > 0){
+    int closestPos=0;
+    int sensorValue = analogRead(lightSensorPin); Serial.print("sensorValue:");Serial.println(sensorValue);
+    
+    if (sensorValue < minReading) sensorValue = minReading;
+    else if (sensorValue > maxReading) sensorValue = maxReading;
+    
+    if (autoPlay==false) closestPos= map(sensorValue,minReading,maxReading,0,num_notes);  
+    else  closestPos= map(sensorValue,minReading+500,maxReading+300,0,num_notes); //Autoplay, so notes optimized for autoplay
+    Serial.print("closestPos:");Serial.println(closestPos);
+  
+    int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
+    Serial.print("Right:");Serial.println(analogRead(rightSliderPin));     //^^^ Sets volume (0-10 is a usable range)
+    Serial.print("Left:");Serial.println(analogRead(leftSliderPin));     //^^^ Sets volume (0-10 is a usable range)
 
-  int sensorValue = analogRead(lightSensorPin);
-  Serial.print("sensorValue:");Serial.println(sensorValue);
+    toneAC(thisScale[closestPos],volVal); Serial.print("Note being played:");Serial.println(thisScale[closestPos]);
+    analogWrite(blueLedPin, map(thisScale[closestPos],110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
+  }//quantized note from one of the predefined scales
+  else{
+    int sensorValue = analogRead(lightSensorPin); Serial.print("sensorValue:");Serial.println(sensorValue);
+    int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
+    Serial.print("Vol (0-10):");Serial.println(volVal);     //^^^ Sets volume (0-10 is a usable range)
+    double note = map(sensorValue,minReading,maxReading,110, 1760); 
+    toneAC(note,volVal); Serial.print("Note being played:");Serial.println(note);
+    analogWrite(blueLedPin, map(note,110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
+  }//continuous, non-chromatic note
   
-  if (sensorValue < minReading) sensorValue = minReading;
-  else if (sensorValue > maxReading) sensorValue = maxReading;
-  
-  Serial.print("sensorValue:");Serial.println(sensorValue);
-
-  if(autoPlay==false) closestPos=map(sensorValue,minReading,maxReading,0,scaleLength);  
-  else  closestPos=map(sensorValue,minReading+500,maxReading+300,0,scaleLength); //Autoplay, so notes optimized for autoplay
-  
-  Serial.print("closestPos:");Serial.println(closestPos);
-
-  int volVal=map(analogRead(leftSliderPin),0,1000,0,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
-  //^^^ Sets volume (0-10 is a usable range)
-  
-  Serial.print("Vol (0-10):");Serial.println(volVal);
-  
-  toneAC(thisScale[closestPos],volVal);
-  Serial.print("Note being played:");Serial.println(thisScale[closestPos]);
-  
-  analogWrite(blueLedPin, map(thisScale[closestPos],thisScale[0],thisScale[scaleLength-1],0,255)); //Sets blue LED intensity proportional to the current note
-
 }//sound()
