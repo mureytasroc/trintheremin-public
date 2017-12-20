@@ -33,26 +33,24 @@ space on the Arduino as a variable or constant*/
 
 //Scales
 
-float scale0[] = {261.63,293.66,329.63,349.23,392.00,440.00,
-493.88,523.25}; //Major C Scale
+float scale1[]={391.995,440.0,493.883,587.330,659.255,783.991,880.0,987.767,1174.66,1318.51}; 
+//top half- G major pent = E minor pent G4 A4 B4 D5 E5 G5 A5 B5 D6 E6
 
-float scale1[]={440,495,556.875,660,742.5}; //Pentatonic Scale
+float scale2[]={130.813,146.832,164.814, 195.998, 220.000,261.626,293.665,329.628,391.995, 440.0}; 
+//bottom half- C major pent = A minor pent C3 D3 E3 G3 A3 C4 D4 E4 G4 A4
 
-float scale2[]={61.7354,73.4162,97.9989,123.4708,146.8324,
-195.9977,246.9417,329.6276,391.9954,493.8833,
-659.2551,783.9909}; //Pentatonic D Scale
+float scale3[]={146.832,164.814,184.997,220.000,246.942,293.665,329.628,369.994,440.000, 493.883};
+//bottom - play D major pent = B minor pent D3 E3 F#3 A3 B3 D4 E4 F#4 A4 B4
 
-float scale3[]={196.00,220.00,246.94,261.63,293.66,
-329.63,369.99,392.00,440.00,493.88,523.25,587.33,659.25,
-739.99,783.99};//G Scale
-
-unsigned long ts=0L; //Counter to enact delays without breaking loop
+unsigned long ts=0L; //Counter to enact delays without breaking loop  
 unsigned long ts2=0L; //Counter to enact delays without breaking loop
 float maxReading=0; //Ambient sensor reading for calibration
 float minReading=1024; //Average sensor reading when sensor is covered
 boolean autoPlay=false; //Boolean autoplay toggle
 
-
+int readings[5];      // the readings from the analog input
+int total =0;
+int readIndex = 0; 
 
 //==============================SETUP===============================
 void setup() {
@@ -104,6 +102,10 @@ void setup() {
   //End Startup Light Sequence--------------------^^^----------------
  
   Serial.begin(9600);
+
+  for (int thisReading = 0; thisReading < 5; thisReading++) {
+    readings[thisReading] = 0;
+  }
 }//setup()
 
 
@@ -126,10 +128,10 @@ Serial.print("right:");Serial.println(analogRead(A1));
       Serial.print("minReading:");Serial.println(minReading);
       Serial.print("maxReading:");Serial.println(maxReading);
 
-      if(scaleSliderVal<50) sound(scale0, -1);//top - play continuous notes
-      else if(scaleSliderVal<575) sound(scale1, 5); //top half- G major pent = E minor pent GABDE
-      else if (scaleSliderVal<1100) sound(scale2, 12 ); //bottom half- C major pent = A minor pent CDEGA
-      else sound(scale3, 15 ); //bottom - play D major pent = B minor pent DEF#AB
+      if(scaleSliderVal<50) sound(scale1, -1);//top - play continuous notes
+      else if(scaleSliderVal<575) sound(scale1, 10); //top half- G major pent = E minor pent GABDE
+      else if (scaleSliderVal<1000) sound(scale2, 10 ); //bottom half- C major pent = A minor pent CDEGA
+      else sound(scale3, 10 ); //bottom - play D major pent = B minor pent DEF#AB
   }
   else{ 
     noToneAC(); //Turn off speaker
@@ -140,33 +142,46 @@ Serial.print("right:");Serial.println(analogRead(A1));
 
 
 void sound(float thisScale[], int num_notes){
+  int sensorValue = constrain(analogRead(lightSensorPin), minReading,maxReading); Serial.print("sensorValue:");Serial.println(sensorValue);
+    
+  // subtract the last reading:
+  total = total - readings[readIndex];
+  // read from the sensor:
+  readings[readIndex] = sensorValue;
+  // add the reading to the total:
+  total = total + readings[readIndex];
+  // advance to the next position in the array:
+  readIndex = readIndex + 1;
 
+  // if we're at the end of the array...
+  if (readIndex >= 5) {
+    // ...wrap around to the beginning:
+    readIndex = 0;
+  }
+
+  // calculate the average:
+  int averageValue = total / 5;
   
   if (num_notes > 0){
-    int closestPos=0;
-    int sensorValue = analogRead(lightSensorPin); Serial.print("sensorValue:");Serial.println(sensorValue);
     
-    if (sensorValue < minReading) sensorValue = minReading;
-    else if (sensorValue > maxReading) sensorValue = maxReading;
+    int closestPos=0;
     
     if (autoPlay==false) closestPos= map(sensorValue,minReading,maxReading,0,num_notes);  
-    else  closestPos= map(sensorValue,minReading+500,maxReading+300,0,num_notes); //Autoplay, so notes optimized for autoplay
-    Serial.print("closestPos:");Serial.println(closestPos);
+    else  closestPos= map(averageValue,minReading+500,maxReading+300,0,num_notes); //Autoplay, so notes optimized for autoplay
   
     int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
-    Serial.print("Right:");Serial.println(analogRead(rightSliderPin));     //^^^ Sets volume (0-10 is a usable range)
-    Serial.print("Left:");Serial.println(analogRead(leftSliderPin));     //^^^ Sets volume (0-10 is a usable range)
 
     toneAC(thisScale[closestPos],volVal); Serial.print("Note being played:");Serial.println(thisScale[closestPos]);
     analogWrite(blueLedPin, map(thisScale[closestPos],110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
+  
   }//quantized note from one of the predefined scales
   else{
-    int sensorValue = analogRead(lightSensorPin); Serial.print("sensorValue:");Serial.println(sensorValue);
+    
     int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
-    Serial.print("Vol (0-10):");Serial.println(volVal);     //^^^ Sets volume (0-10 is a usable range)
-    double note = map(sensorValue,minReading,maxReading,110, 1760); 
+    double note = constrain(map(averageValue,minReading,maxReading,130, 1300), 130, 1300); 
     toneAC(note,volVal); Serial.print("Note being played:");Serial.println(note);
     analogWrite(blueLedPin, map(note,110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
+  
   }//continuous, non-chromatic note
   
 }//sound()
