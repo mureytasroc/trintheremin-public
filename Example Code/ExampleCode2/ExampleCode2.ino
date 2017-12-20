@@ -47,7 +47,8 @@ unsigned long ts2=0L; //Counter to enact delays without breaking loop
 float maxReading=0; //Ambient sensor reading for calibration
 float minReading=1024; //Average sensor reading when sensor is covered
 boolean autoPlay=false; //Boolean autoplay toggle
-
+boolean newAutoPlay=true; //Used for triggering a calibration every time the autoplay feature is switched on
+int autoPlayAmbient=0; //The ambient value for the autoplay feature
 int readings[5];      // the readings from the analog input
 int total =0;
 int readIndex = 0; 
@@ -110,23 +111,27 @@ void setup() {
 
 
 void loop() {
-Serial.print("left:");Serial.println(analogRead(A2));
-Serial.print("right:");Serial.println(analogRead(A1));
 
   if(digitalRead(topButtonPin)==HIGH){
     autoPlay=true;
-    analogWrite(danceLedPin,255); 
+    digitalWrite(danceLedPin,HIGH); 
+    if(newAutoPlay==true){ //Begin autoplay calibration
+      double apReadings=0; //Declare/init variable to hold average ambient value for autoplay
+      for(int i=0;i<20;i++){
+        apReadings+=analogRead(lightSensorPin); //Add up readings
+      }
+      apReadings/=20; //Divide sum of readings by number of readings for average reading
+      autoPlayAmbient=round(apReadings); //Round the floating point averaged variable to an int
+      newAutoPlay=false; //Autoplay no longer needs calibration
+    }
   } else{
-    autoPlay=false; 
-    analogWrite(danceLedPin,0); 
+    newAutoPlay=true; //If auoplay is turned off, arm the calibration feature for when it is turned back on
+    autoPlay=false;
+    digitalWrite(danceLedPin,LOW); 
   }
 
   if((digitalRead(switchPin)==HIGH)&&(digitalRead(botButtonPin)==LOW)){ //If the play switch is on and the pause button is off
       int scaleSliderVal=analogRead(leftSliderPin);
-      
-      Serial.print("Scale Slider:");Serial.println(scaleSliderVal);
-      Serial.print("minReading:");Serial.println(minReading);
-      Serial.print("maxReading:");Serial.println(maxReading);
 
       if(scaleSliderVal<50) sound(scale1, -1);//top - play continuous notes
       else if(scaleSliderVal<575) sound(scale1, 10); //top half- G major pent = E minor pent GABDE
@@ -142,7 +147,7 @@ Serial.print("right:");Serial.println(analogRead(A1));
 
 
 void sound(float thisScale[], int num_notes){
-  int sensorValue = constrain(analogRead(lightSensorPin), minReading,maxReading); Serial.print("sensorValue:");Serial.println(sensorValue);
+  int sensorValue = constrain(analogRead(lightSensorPin), minReading,maxReading);
     
   // subtract the last reading:
   total = total - readings[readIndex];
@@ -166,12 +171,12 @@ void sound(float thisScale[], int num_notes){
     
     int closestPos=0;
     
-    if (autoPlay==false) closestPos= map(sensorValue,minReading,maxReading,0,num_notes);  
-    else  closestPos= map(averageValue,maxReading,maxReading*8/50+600,0,num_notes); //Autoplay, so notes optimized for autoplay
+    if (autoPlay==false) closestPos= map(constrain(sensorValue,minReading,maxReading),minReading,maxReading,0,num_notes);  
+    else closestPos= map(averageValue,autoPlayAmbient,autoPlayAmbient+550-round(0.5*(double)autoPlayAmbient),0,num_notes); //Autoplay, so notes optimized for autoplay, depending on calibrated ambient autoplay value
   
     int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
 
-    toneAC(thisScale[closestPos],volVal); Serial.print("Note being played:");Serial.println(thisScale[closestPos]);
+    toneAC(thisScale[closestPos],volVal);
     analogWrite(blueLedPin, map(thisScale[closestPos],110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
   
   }//quantized note from one of the predefined scales
@@ -179,7 +184,7 @@ void sound(float thisScale[], int num_notes){
     
     int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
     double note = constrain(map(averageValue,minReading,maxReading,130, 1300), 130, 1300); 
-    toneAC(note,volVal); Serial.print("Note being played:");Serial.println(note);
+    toneAC(note,volVal);
     analogWrite(blueLedPin, map(note,110,1760 ,0,255)); //Sets blue LED intensity proportional to the current note
   
   }//continuous, non-chromatic note
