@@ -171,8 +171,8 @@ void sound(float thisScale[], int num_notes){
     
     int closestPos=0;
     
-    if (autoPlay==false) closestPos= map(constrain(sensorValue,minReading,maxReading),minReading,maxReading,0,num_notes);  
-    else closestPos= map(averageValue,autoPlayAmbient,autoPlayAmbient+550-round(0.5*(double)autoPlayAmbient),0,num_notes); //Autoplay, so notes optimized for autoplay, depending on calibrated ambient autoplay value
+    if (autoPlay==false) closestPos= map(constrain(sensorValue,minReading,maxReading),minReading,maxReading,0,num_notes-1);  
+    else closestPos= map(averageValue,autoPlayAmbient,autoPlayAmbient+550-round(0.5*(double)autoPlayAmbient),0,num_notes-1); //Autoplay, so notes optimized for autoplay, depending on calibrated ambient autoplay value
   
     int volVal=map(analogRead(rightSliderPin),0,1000,1,10); //The map HAS TO BE from 0 to 1000 or the sound quality will be bad at full volume
 
