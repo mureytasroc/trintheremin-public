@@ -7,9 +7,8 @@
 
 ---
 #### Important Notes -- Read Before Use
-* The bottom of the boards can get hot due to the amplifier circuit (the amount of heat is fine/within spec for the circuits but can be uncomfortable to touch).   If the speaker is making noise, the bottom of the board will be hot.   Do not handle the bottom of the board when the board is powered (because depending on what's on your hands your hands could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, it's just good practice).   Especially avoid touching the bottom of the board if the speaker is making noise because it will be hot (volume does not affect amount of heat produced).   When the speaker is not making noise the board is not hot at all.   In future versions the heat produced will significantly be reduced (and will not be uncomfortable to the touch) with a more efficient (but more sophisticated/complicated) amplifier circuit. 
 
-* Because of the heat produced by the amplifier (see above note) and to protect the circuit, the minimum case material that the board should have when being played or programmed is the top panel.   After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.   Then when you are using the board hold it by the top laser cut panel, not by the board.
+* After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.   Then when you are using the board hold it by the top laser cut panel, not by the board.
 
 * This version (and all versions) are best used with a full case and horn (see the [case folder](Case) and the [horn folder](Horn) ) for ergonomics and sound quality, although Advanced CS1 will not be making cases for the boards (CS2 will be).
 
