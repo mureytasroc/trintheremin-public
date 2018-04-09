@@ -16,7 +16,7 @@
 
 * The board behaves like an Arduino Micro.   See the "Programming" section below.
 
-* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
+* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.
 
 * See the [example code](#example-code-notes) section of this readme on how to conduct the board calibration.
 
