@@ -4,19 +4,19 @@
 
 ![Alt text](https://drive.google.com/uc?export=view&id=1mHzTGecXiTAXDt87pHGVnfiNSx_XSRev)
 
-
 ---
 #### Important Notes -- Read Before Use
+* Do not handle the bottom of the board when the board is powered (it is possible that your skin could conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, it's just good practice).
 
-* After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.   Then when you are using the board hold it by the top laser cut panel, not by the board.
+* The minimum case material that the board should have when being played or programmed is the top panel.   After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.   Then when you are using the board hold it by the top laser cut panel, not by the board.
 
-* This version (and all versions) are best used with a full case and horn (see the [case folder](Case) and the [horn folder](Horn) ) for ergonomics and sound quality, although Advanced CS1 will not be making cases for the boards (CS2 will be).
+* This version (and all versions) are best used with a full case and horn (see the [case folder](Case) and the [horn folder](Horn) ) for ergonomics and sound quality, though the case and horn are not necessary for basic use.
 
 * The circuit will not work properly if the battery is depleted (see [battery section](#battery) below).   If you have been using the same battery for a while or the circuit is acting like it is low on battery (see [battery section](#battery) below), then follow the instructions in the [battery section](#battery) of this readme to measure how much battery is left.   In future versions there will be an onboard battery sensor you can access in your code.
 
 * The board behaves like an Arduino Micro.   See the "Programming" section below.
 
-* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.
+* When programming the slider to control the volume of the speaker, map your analog reading from 0-1000 to 0-10.   If you use 0-1023 the full volume tones will sound distorted because it will flicker between volume level 9 and 10.
 
 * See the [example code](#example-code-notes) section of this readme on how to conduct the board calibration.
 
