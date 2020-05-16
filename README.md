@@ -6,8 +6,6 @@
 
 ---
 #### Important Notes -- Read Before Use
-* Do not handle the bottom of the board when the board is powered (it is possible that your skin can conduct small amounts of current and possibly damage the circuit; although this is highly unlikely unless your hands are soaked in salty water, it's just good practice).
-
 * The minimum case material that the board should have when being played or programmed is the top panel.   After you sodder on the sliders use bolts (provided) to secure the top panel (provided for Advanced CS1) onto the board.   Then when you are using the board hold it by the top laser cut panel, not by the board.
 
 * This version (and all versions) are best used with a full case and horn (see the [case folder](Case) and the [horn folder](Horn) ) for ergonomics and sound quality, though the case and horn are not necessary for basic use.
